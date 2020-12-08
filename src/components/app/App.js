@@ -24,7 +24,7 @@ onSearch= (e)=>{
     let newArray=todoData
     newArray.map((item)=>{
       item.className='list-group-item'
-      if(item.label.toLowerCase().includes(e.target.value) === false){
+      if(item.label.toLowerCase().includes(e.target.value.toLowerCase()) === false){
         item.className +=' hide'
       }
       if(e.target.value.length===0){
