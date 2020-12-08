@@ -8,9 +8,7 @@ import ItemAddForm from '../item-add-form/item-add-form'
 import '../../index.scss';
 
 class App extends Component  {
-
   maxId= 0
-
   state = {
   todoData:[
     this.createTodoItem('Drink Coffe'),
@@ -24,18 +22,17 @@ onSearch= (e)=>{
     let newArray=todoData
     newArray.map((item)=>{
       item.className='list-group-item'
-      if(item.label.toLowerCase().includes(e.target.value.toLowerCase()) === false){
-        item.className +=' hide'
+        if(item.label.toLowerCase().includes(e.target.value.toLowerCase()) === false){
+          item.className +=' hide'
       }
-      if(e.target.value.length===0){
-        item.className='list-group-item'
+        if(e.target.value.length===0){
+          item.className='list-group-item'
       }
-      return newArray
-    })
-    return{
-        todoData: newArray
-      }
-
+    return newArray
+  })
+  return{
+    todoData: newArray
+    }
   })
 }
 
@@ -61,22 +58,20 @@ deleteItem = (id)=>{
 }
 
 addItem=(text)=>{
-
   const newItem = this.createTodoItem(text)
-  
-  this.setState(({todoData})=>{
-    const newArray=[...todoData, newItem]
-    return{
-      todoData:newArray
-    }
+    this.setState(({todoData})=>{
+      const newArray=[...todoData, newItem]
+      return{
+        todoData:newArray
+      }
   })
 }
 
 toggleProperty(arr, id ,propName){
-    const idx = arr.findIndex((el)=>el.id === id)
-    const oldItem = arr[idx]
-    const newItem= {...oldItem, [propName]:!oldItem[propName]}
-    return[...arr.slice(0, idx), newItem, ...arr.slice(idx+1)]
+  const idx = arr.findIndex((el)=>el.id === id)
+  const oldItem = arr[idx]
+  const newItem= {...oldItem, [propName]:!oldItem[propName]}
+  return[...arr.slice(0, idx), newItem, ...arr.slice(idx+1)]
 }
 
 onToggleImportatn= (id)=>{
@@ -84,7 +79,7 @@ onToggleImportatn= (id)=>{
     return{
       todoData: this.toggleProperty(todoData,id,'important')
     }
-    })
+  })
 }
 
 onToggleDone= (id)=>{
@@ -92,9 +87,8 @@ onToggleDone= (id)=>{
     return{
       todoData: this.toggleProperty(todoData,id,'done')
     }
-    })
-
-  }
+  })
+}
 
 
 filterActive = ()=>{
@@ -109,7 +103,6 @@ filterActive = ()=>{
     })
     return{todoData:newArr}
   })
-  
 }
 
 filterDone = ()=>{
@@ -148,26 +141,29 @@ render(){
   const todoCounter = this.state.todoData.length- doneCounter
   return (
       <div className="todo-app">
-        <AppHeader toDo={todoCounter} done={doneCounter} />
+        <AppHeader 
+          toDo={todoCounter} 
+          done={doneCounter} 
+          />
         <div className="top-panel d-flex">
-          <SearchPanel 
+        <SearchPanel 
           onSearch={this.onSearch}/>
-          <ItemStatusFilter 
+        <ItemStatusFilter 
           filterActive={this.filterActive}
           filterDone={this.filterDone}
           filterAll={this.filterAll}
           activeButton={this.activeButton}
           />
         </div>
-
         <TodoList 
-        onToggleImportatn={this.onToggleImportatn}
-        onToggleDone={this.onToggleDone}
-        todos={this.state.todoData} 
-        onDeleted={this.deleteItem}
+          onToggleImportatn={this.onToggleImportatn}
+          onToggleDone={this.onToggleDone}
+          todos={this.state.todoData} 
+          onDeleted={this.deleteItem}
         />
         <ItemAddForm
-        onItemAdded={this.addItem}/>
+          onItemAdded={this.addItem}
+        />
       </div>
     )
   }

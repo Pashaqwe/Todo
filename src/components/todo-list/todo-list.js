@@ -15,23 +15,21 @@ class TodoList extends Component{
     return (
       <li key={id} className={item.className}>
         <TodoListItem 
-        {...itemProps} 
-        zzz={()=>this.props.zzz()}
-        onDeleted={()=>onDeleted(id)}
-        onToggleImportatn={()=>onToggleImportatn(id)}
-        onToggleDone={()=>onToggleDone(id)}
-        
+          {...itemProps} 
+          zzz={()=>this.props.zzz()}
+          onDeleted={()=>onDeleted(id)}
+          onToggleImportatn={()=>onToggleImportatn(id)}
+          onToggleDone={()=>onToggleDone(id)}
         />
       </li>
     );
-    
   });
   
   return (
-    <ul className="list-group todo-list">
-      { elements }
-    </ul>
-  );
+      <ul className="list-group todo-list">
+        { elements }
+      </ul>
+    );
   }
 };
 
