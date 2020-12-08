@@ -10,11 +10,11 @@ class TodoListItem extends Component {
     let classNames = 'todo-list-item'
 
     if(done){
-        classNames += ' done'
+      classNames += ' done'
     }
 
     if(important){
-        classNames += ' important' 
+      classNames += ' important' 
     }
  
     return (
@@ -25,15 +25,17 @@ class TodoListItem extends Component {
           {label}
         </span>
   
-        <button type="button"
-                className="btn btn-outline-success btn-sm float-right"
-                onClick={()=>onToggleImportatn(this.props.id)}>
+        <button 
+          type="button"
+          className="btn btn-outline-success btn-sm float-right"
+          onClick={()=>onToggleImportatn(this.props.id)}>
           <i className="fa fa-exclamation" />
         </button>
   
-        <button type="button"
-                className="btn btn-outline-danger btn-sm float-right"
-                onClick={onDeleted}>
+        <button 
+          type="button"
+          className="btn btn-outline-danger btn-sm float-right"
+          onClick={onDeleted}>
           <i className="fa fa-trash-o" />
         </button>
       </span>
